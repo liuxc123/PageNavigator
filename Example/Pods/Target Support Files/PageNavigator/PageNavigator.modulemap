@@ -1,0 +1,6 @@
+framework module PageNavigator {
+  umbrella header "PageNavigator-umbrella.h"
+
+  export *
+  module * { export * }
+}

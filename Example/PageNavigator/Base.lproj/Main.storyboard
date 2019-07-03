@@ -1,30 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wvC-4x-Pyo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Navigator Flow Collection-->
+        <scene sceneID="yCP-Ma-Pzq">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="PageNavigator_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="Collection" storyboardIdentifier="Collection" id="wvC-4x-Pyo" customClass="NavigatorFlowCollection" customModule="Navigator_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="oz2-ne-m6k"/>
+                        <viewControllerLayoutGuide type="bottom" id="3he-oQ-CVj"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="sVh-b6-fYq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="boE-Lc-uHw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="607"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aHf-io-jhT" customClass="NavigatorFlowLayout" customModule="Navigator_Example" customModuleProvider="target">
+                                    <size key="itemSize" width="160" height="160"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="COd-CK-NEq" customClass="NavigatorFlowHeader" customModule="Navigator_Example" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="wvC-4x-Pyo" id="zzQ-Jh-MRf"/>
+                                    <outlet property="delegate" destination="wvC-4x-Pyo" id="sLl-zZ-Ged"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tD-gB-9Lu">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="anY-WU-Lcq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8tD-gB-9Lu" firstAttribute="top" secondItem="boE-Lc-uHw" secondAttribute="bottom" id="Bki-8x-vEi"/>
+                            <constraint firstItem="boE-Lc-uHw" firstAttribute="leading" secondItem="sVh-b6-fYq" secondAttribute="leading" id="F16-E5-m6W"/>
+                            <constraint firstItem="3he-oQ-CVj" firstAttribute="top" secondItem="8tD-gB-9Lu" secondAttribute="bottom" id="STb-vN-S5A"/>
+                            <constraint firstItem="boE-Lc-uHw" firstAttribute="top" secondItem="oz2-ne-m6k" secondAttribute="bottom" id="Y1g-cU-hbq"/>
+                            <constraint firstItem="8tD-gB-9Lu" firstAttribute="leading" secondItem="sVh-b6-fYq" secondAttribute="leading" id="beh-sV-7cm"/>
+                            <constraint firstAttribute="trailing" secondItem="boE-Lc-uHw" secondAttribute="trailing" id="n54-qE-kh4"/>
+                            <constraint firstAttribute="trailing" secondItem="8tD-gB-9Lu" secondAttribute="trailing" id="zoh-A0-P5K"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="boE-Lc-uHw" id="R5S-pA-2JP"/>
+                        <outlet property="stateLabel" destination="8tD-gB-9Lu" id="bkD-3j-i1e"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CMY-Ga-d8j" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="132" y="131.78410794602701"/>
         </scene>
     </scenes>
 </document>

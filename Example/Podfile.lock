@@ -1,0 +1,16 @@
+PODS:
+  - PageNavigator (0.1.0)
+
+DEPENDENCIES:
+  - PageNavigator (from `../`)
+
+EXTERNAL SOURCES:
+  PageNavigator:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  PageNavigator: 62b5668479d44d82c65f3230033142aee0b4107d
+
+PODFILE CHECKSUM: 85db24c3088cb902962558403c815062ae222704
+
+COCOAPODS: 1.6.2
