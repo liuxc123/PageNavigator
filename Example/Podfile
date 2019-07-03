@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'PageNavigator_Example' do
+  pod 'PageNavigator', :path => '../'
+
+  target 'PageNavigator_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
