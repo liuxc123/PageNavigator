@@ -29,6 +29,8 @@
 		0450D51B22CC9BA500DF175D /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450D50322CC9BA400DF175D /* UIColor+Utils.swift */; };
 		0450D51C22CC9BA500DF175D /* LeftTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450D50522CC9BA400DF175D /* LeftTransition.swift */; };
 		0450D51D22CC9BA500DF175D /* Interceptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450D50722CC9BA400DF175D /* Interceptors.swift */; };
+		04AE50ED22CDCEDE0089A405 /* GTUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE50EC22CDCEDE0089A405 /* GTUITabBarController.swift */; };
+		04AE50EF22CDCF240089A405 /* GTUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE50EE22CDCF240089A405 /* GTUINavigationController.swift */; };
 		4D62C684B654D3C1BAAF8D24 /* Pods_PageNavigator_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1E369D170227BD31A84A8E /* Pods_PageNavigator_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -71,6 +73,8 @@
 		0450D50322CC9BA400DF175D /* UIColor+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		0450D50522CC9BA400DF175D /* LeftTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTransition.swift; sourceTree = "<group>"; };
 		0450D50722CC9BA400DF175D /* Interceptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interceptors.swift; sourceTree = "<group>"; };
+		04AE50EC22CDCEDE0089A405 /* GTUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTUITabBarController.swift; sourceTree = "<group>"; };
+		04AE50EE22CDCF240089A405 /* GTUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTUINavigationController.swift; sourceTree = "<group>"; };
 		19489721CBA1BD98978A6B95 /* Pods_PageNavigator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PageNavigator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2713A37CE52E67A46111FF32 /* PageNavigator.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PageNavigator.podspec; path = ../PageNavigator.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		3AAF6263043009DE4C79302A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -168,6 +172,15 @@
 			path = Interceptors;
 			sourceTree = "<group>";
 		};
+		04AE50EB22CDCED10089A405 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				04AE50EC22CDCEDE0089A405 /* GTUITabBarController.swift */,
+				04AE50EE22CDCF240089A405 /* GTUINavigationController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		274EA048D4FC2A10623DDFE7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				04AE50EB22CDCED10089A405 /* Common */,
 				0450D50222CC9BA400DF175D /* Helper */,
 				0450D50622CC9BA400DF175D /* Interceptors */,
 				0450D4ED22CC9BA400DF175D /* Navigator */,
@@ -273,7 +287,7 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				F903D65CCF1636B533C57B87 /* [CP] Embed Pods Frameworks */,
+				9390478D85554887CFCE2DAD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -365,6 +379,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		9390478D85554887CFCE2DAD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PageNavigator_Example/Pods-PageNavigator_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/PageNavigator/PageNavigator.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageNavigator.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PageNavigator_Example/Pods-PageNavigator_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AB0010D1CEC8D8FAABBE6559 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,28 +445,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F903D65CCF1636B533C57B87 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PageNavigator_Example/Pods-PageNavigator_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PageNavigator/PageNavigator.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageNavigator.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PageNavigator_Example/Pods-PageNavigator_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -452,11 +466,13 @@
 				0450D50A22CC9BA400DF175D /* RedSceneHandler.swift in Sources */,
 				0450D51422CC9BA400DF175D /* NavigatorFlowLayout.swift in Sources */,
 				0450D51D22CC9BA500DF175D /* Interceptors.swift in Sources */,
+				04AE50ED22CDCEDE0089A405 /* GTUITabBarController.swift in Sources */,
 				0450D50D22CC9BA400DF175D /* URLSceneHandler.swift in Sources */,
 				0450D51622CC9BA500DF175D /* Presentation.swift in Sources */,
 				0450D51522CC9BA500DF175D /* NavigatorFlowSequence.swift in Sources */,
 				0450D51222CC9BA400DF175D /* NavigatorFlowHeader.swift in Sources */,
 				0450D50F22CC9BA400DF175D /* CollectionSceneHandler.swift in Sources */,
+				04AE50EF22CDCF240089A405 /* GTUINavigationController.swift in Sources */,
 				0450D51922CC9BA500DF175D /* NavigatorFlowSection.swift in Sources */,
 				0450D51322CC9BA400DF175D /* PresentationContext.swift in Sources */,
 				0450D50C22CC9BA400DF175D /* NavBarSceneHandler.swift in Sources */,
@@ -607,6 +623,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PageNavigator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -622,6 +639,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PageNavigator/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";

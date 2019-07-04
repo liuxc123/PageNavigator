@@ -32,3 +32,15 @@ class BlueSceneHandler: SceneHandler {
     }
 }
 
+class TestSceneHandler: SceneHandler {
+    var name: SceneName {
+        return "test"
+    }
+
+    func view(with parameters: Parameters) -> UIViewController {
+        return UIViewController()
+    }
+
+
+}
+

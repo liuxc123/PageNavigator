@@ -20,7 +20,7 @@ class TabBarSceneHandler: SceneHandler {
     }
 
     func view(with parameters: Parameters) -> UIViewController {
-        return TabBarContainer()
+        return GTUITabBarController()
     }
 
 }
