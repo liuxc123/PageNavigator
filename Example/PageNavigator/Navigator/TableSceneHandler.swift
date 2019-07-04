@@ -29,4 +29,5 @@ class TableSceneHandler: SceneHandler {
         view.title = "Table"
         return view
     }
+
 }

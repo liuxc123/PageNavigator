@@ -13,4 +13,14 @@ import PageNavigator
 let globalWindow = UIWindow()
 let navigator = TabNavigator(window: globalWindow, sceneURLHandler: URLSceneHandler())
 
+extension SceneHandler {
 
+    /// rewirte default NavigationContainer
+    func navigation(with viewController: UIViewController) -> UINavigationController {
+        let navigationController = GTUINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = viewController.modalPresentationStyle
+        navigationController.transitioningDelegate = viewController.transitioningDelegate
+        viewController.transitioningDelegate = nil
+        return navigationController
+    }
+}

@@ -21,5 +21,6 @@ class NavBarSceneHandler: SceneHandler {
     func view(with parameters: Parameters = [:]) -> UIViewController {
         return NavigationBarContainer()
     }
+    
 }
 

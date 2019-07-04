@@ -32,4 +32,5 @@ class CollectionSceneHandler: SceneHandler {
         view.title = "Collection"
         return view
     }
+
 }

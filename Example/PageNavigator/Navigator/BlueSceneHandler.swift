@@ -30,6 +30,7 @@ class BlueSceneHandler: SceneHandler {
         view.title = "Blue"
         return view
     }
+
 }
 
 class TestSceneHandler: SceneHandler {

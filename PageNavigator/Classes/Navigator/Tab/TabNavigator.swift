@@ -35,7 +35,7 @@ public extension TabNavigator {
         guard let tabBarContainer = manager.rootViewController as? UITabBarController, (tabBarContainer is ViewControllerContainer) else {
             return
         }
-        
+
         tabBarContainer.viewControllers = sceneContexts
             .map(provider.scene)
             .map(buildViewController)
@@ -46,7 +46,7 @@ public extension TabNavigator {
 
 private extension TabNavigator {
     func buildViewController(scene: Scene) -> UIViewController {
-        return UINavigationController(rootViewController: scene.view())
+        return scene.sceneHandler.navigation(with: scene.view())
     }
 }
 

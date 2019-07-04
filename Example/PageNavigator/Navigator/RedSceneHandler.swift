@@ -28,4 +28,5 @@ class RedSceneHandler: SceneHandler {
         view.title = "Red"
         return view
     }
+
 }
