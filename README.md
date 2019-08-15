@@ -7,6 +7,7 @@ A simple app internal navigation framework to replace the cumbersome navigation 
 ## Requirements
 
 - iOS 8.0 later
+- Swift 4.2
 
 ## Installation
 
