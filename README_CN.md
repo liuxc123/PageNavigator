@@ -79,110 +79,110 @@ navigator.push(.someScene)
 
 - Present:
 
-```
-navigator.present(.login)
-```
+  ```
+  navigator.present(.login)
+  ```
 
 - Present 包含 navigation controller:
 
-```
-navigator.presentNavigation(.someScene)
-```
+  ```
+  navigator.presentNavigation(.someScene)
+  ```
 
 - dismiss 所有页面:
 
-```
-navigator.dismiss()
-```
+  ```
+  navigator.dismiss()
+  ```
 
 - Dismiss 第一个页面:
 
-```
-navigator.dismiss()
-```
+  ```
+  navigator.dismiss()
+  ```
 
 - Dismiss 某一个页面:
 
-```
-navigator.dismiss(.someScene)
-```
+  ```
+  navigator.dismiss(.someScene)
+  ```
 
 - Push:
 
-```
-navigator.push(.someScene)
-```
+  ```
+  navigator.push(.someScene)
+  ```
 
 - Pop 到根视图:
 
-```
-navigator.popToRoot()
-```
+  ```
+  navigator.popToRoot()
+  ```
 
 - Reload 重新加载:
 
-```
-navigator.reload(.someScene)
-```
+  ```
+  navigator.reload(.someScene)
+  ```
 
-Calls the method reload from the scene handler.
+  Calls the method reload from the scene handler.
 
 - URLs url 跳转:
 
   在创建 Navigator 时创建一个`urlHandler` 实现`SceneURLHandler`协议
   自定义跳转协议
 
-```
-navigator.url(someURL)
-```
+  ```
+  navigator.url(someURL)
+  ```
 
 - 3DTouch 预览
 
-```
-navigator.preview(.someScene, from: someViewController, at: someSourceView)
-```
+  ```
+  navigator.preview(.someScene, from: someViewController, at: someSourceView)
+  ```
 
 - 气泡展示:
 
-```
-navigator.popover(.someScene, from: somView)
-```
+  ```
+  navigator.popover(.someScene, from: somView)
+  ```
 
 - 场景过渡:
 
   自定义 Tansition 类, 并且实现 Transition 协议
 
-```
-navigator.transition(to: .someScene, with: someInteractiveTransition)
-```
+  ```
+  navigator.transition(to: .someScene, with: someInteractiveTransition)
+  ```
 
 - 创建一个场景，获取对应的类:
 
-```
-let loginView = navigator.view(for: .login)
-```
+  ```
+  let loginView = navigator.view(for: .login)
+  ```
 
 - 遍历获取当前堆栈的层次结构`sceneName`和`presentationType`
 
-```
-navigator.traverse { state in
-    if state.names.contains(.collection) {
-        // Do something
-    }
-}
-```
+  ```
+  navigator.traverse { state in
+      if state.names.contains(.collection) {
+          // Do something
+      }
+  }
+  ```
 
 - 使用 builder 的相对堆栈导航:
 
-```
-navigator.build { builder in
-    builder.modal(.contact)
-    builder.modalNavigation(.detail) // 模态展示一个包含导航控制器的视图.
-    builder.push(.avatar)
-}
-```
+  ```
+  navigator.build { builder in
+      builder.modal(.contact)
+      builder.modalNavigation(.detail) // 模态展示一个包含导航控制器的视图.
+      builder.push(.avatar)
+  }
+  ```
 
-如果使用相对导航，可以在当前层次结构上添加新场景。
+  如果使用相对导航，可以在当前层次结构上添加新场景。
 
 - 使用 builder 在绝对导航中进行操作
 
@@ -201,55 +201,55 @@ navigator.build { builder in
 
   对于更复杂的导航，您可以创建并连接将串行执行的操作。通过创建一个新的 SceneOperation 并扩展 Navigator 协议，可以轻松地对其进行归档。
 
-```
-class SomeOperation {
-    fileprivate var scenes: [Scene]
-    fileprivate let renderer: SceneRenderer
+  ```
+  class SomeOperation {
+      fileprivate var scenes: [Scene]
+      fileprivate let renderer: SceneRenderer
 
-    init(scenes: [Scene], renderer: SceneRenderer) {
-        self.scenes = scenes
-        self.renderer = renderer
-    }
-}
+      init(scenes: [Scene], renderer: SceneRenderer) {
+          self.scenes = scenes
+          self.renderer = renderer
+      }
+  }
 
-extension SomeOperation: SceneOperation {
-    func execute(with completion: CompletionBlock?) {
-        let dismissAllOperation = renderer.dismissAll(animated: true)
-        let addScenes = renderer.add(scenes: scenes)
-        let reloadLast = renderer.reload(scene: scenes.last!)
+  extension SomeOperation: SceneOperation {
+      func execute(with completion: CompletionBlock?) {
+          let dismissAllOperation = renderer.dismissAll(animated: true)
+          let addScenes = renderer.add(scenes: scenes)
+          let reloadLast = renderer.reload(scene: scenes.last!)
 
-        let complexOperation = dismissAllOperation
-        .then(addScenes)
-        .then(reloadLast)
-        .execute(with: completion)
-    }
-}
-```
+          let complexOperation = dismissAllOperation
+          .then(addScenes)
+          .then(reloadLast)
+          .execute(with: completion)
+      }
+  }
+  ```
 
 - 拦截器:
 
-通过实现协议`SceneOperationInterceptor`，您可以拦截导航器执行的所有操作。该协议允许您在某些情况下更改导航器的行为。
+  通过实现协议`SceneOperationInterceptor`，您可以拦截导航器执行的所有操作。该协议允许您在某些情况下更改导航器的行为。
 
-例如，在显示一些编辑联系人视图之前显示联系人丢失警告:
+  例如，在显示一些编辑联系人视图之前显示联系人丢失警告:
 
-```
-class ContactsPermissionsInterceptor: SceneOperationInterceptor {
-    func operation(with operation: SceneOperation, context: SceneOperationContext) -> SceneOperation? {
-        return ShowContactPermissionsIfNeededSceneOperation().then(operation)
-    }
+  ```
+  class ContactsPermissionsInterceptor: SceneOperationInterceptor {
+      func operation(with operation: SceneOperation, context: SceneOperationContext) -> SceneOperation? {
+          return ShowContactPermissionsIfNeededSceneOperation().then(operation)
+      }
 
-    func shouldIntercept(operation: SceneOperation, context: SceneOperationContext) -> Bool {
-        return context.targetState.names.contains(.editContact)
-    }
-}
-```
+      func shouldIntercept(operation: SceneOperation, context: SceneOperationContext) -> Bool {
+          return context.targetState.names.contains(.editContact)
+      }
+  }
+  ```
 
-If you want to stop the execution of the operation, you must return nil on operation(with:context:)
+  If you want to stop the execution of the operation, you must return nil on operation(with:context:)
 
-如果您想停止操作的执行，您必须在`operation(for operation: with context:)`操作上返回 nil
+  如果您想停止操作的执行，您必须在`operation(for operation: with context:)`操作上返回 nil
 
-要开始使用拦截，需要对拦截器进行注册。
+  要开始使用拦截，需要对拦截器进行注册。
 
-```
-navigator.register(ContactsPermissionsInterceptor())
-```
+  ```
+  navigator.register(ContactsPermissionsInterceptor())
+  ```
