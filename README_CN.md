@@ -18,13 +18,13 @@ pod 'PageNavigator'
 ### 创建一个 Navigator
 
 ```
-/// NavigationController 作为容器的 navigator
+/// NavigationController 作为容器
 let navigator = NavNavigator(window: UIWindow())
 
-/// TabBarController 作为容器的 navigator
+/// TabBarController 作为容器
 let navigator = TabNavigator(window: UIWindow())
 
-/// 自定义容器的 navigator
+/// 自定义容器
 let navigator = ContainerNavigator(window: UIWindow())
 
 ```
