@@ -2,7 +2,7 @@
 
 A simple app internal navigation framework to replace the cumbersome navigation logic.
 
-[中文文档]()
+[中文文档](https://github.com/liuxc123/PageNavigator/blob/master/README_CN.md)
 
 ## Requirements
 
