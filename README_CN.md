@@ -1,38 +1,37 @@
 # PageNavigator
 
-A simple app internal navigation framework to replace the cumbersome navigation logic.
+一个简单的应用程序内部导航框架，取代了复杂的导航逻辑。
 
-[中文文档]()
+## 版本要求
 
-## Requirements
+- iOS 8.0 以后
+- Swift 4.2 以上
 
-- iOS 8.0 later
-
-## Installation
+## Cocoapods 安装
 
 ```ruby
 pod 'PageNavigator'
 ```
 
-## How does it work
+## 用法
 
-### Create a Navigator
+### 创建一个 Navigator
 
 ```
-/// NavigationController container based navigator
+/// NavigationController 作为容器的 navigator
 let navigator = NavNavigator(window: UIWindow())
 
-/// TabBarController container based navigator
+/// TabBarController 作为容器的 navigator
 let navigator = TabNavigator(window: UIWindow())
 
-/// Custom container based navigator
+/// 自定义容器的 navigator
 let navigator = ContainerNavigator(window: UIWindow())
 
 ```
 
-The navigator is the main entry point.
+`navigator` 是最主要的入口
 
-### Create a Scene and register it
+### 创建一个登录场景并注册它
 
 ```
 extension SceneName {
@@ -67,16 +66,16 @@ class LoginScene: SceneHandler {
 navigator.register(LoginScene())
 ```
 
-### Set root scene and navigate!
+### 设置导航跟视图
 
 ```
 navigator.root(.login)
 navigator.push(.someScene)
 ```
 
-The root scene is the one which it's going to be set as rootViewController of the UIWindow.
+根场景将被设置为 UIWindow 的 rootViewController。
 
-## Features
+## 特点
 
 - Present:
 
@@ -84,25 +83,25 @@ The root scene is the one which it's going to be set as rootViewController of th
 navigator.present(.login)
 ```
 
-- Present inside navigation controller:
+- Present 包含 navigation controller:
 
 ```
 navigator.presentNavigation(.someScene)
 ```
 
-- Dismiss all views:
+- dismiss 所有页面:
 
 ```
 navigator.dismiss()
 ```
 
-- Dismiss first view:
+- Dismiss 第一个页面:
 
 ```
 navigator.dismiss()
 ```
 
-- Dismiss by scene:
+- Dismiss 某一个页面:
 
 ```
 navigator.dismiss(.someScene)
@@ -114,13 +113,13 @@ navigator.dismiss(.someScene)
 navigator.push(.someScene)
 ```
 
-- Pop to root view:
+- Pop 到根视图:
 
 ```
 navigator.popToRoot()
 ```
 
-- Reload:
+- Reload 重新加载:
 
 ```
 navigator.reload(.someScene)
@@ -128,37 +127,42 @@ navigator.reload(.someScene)
 
 Calls the method reload from the scene handler.
 
-- URLs:
+- URLs url 跳转:
+
+  在创建 Navigator 时创建一个`urlHandler` 实现`SceneURLHandler`协议
+  自定义跳转协议
 
 ```
 navigator.url(someURL)
 ```
 
-- Force touch preview
+- 3DTouch 预览
 
 ```
 navigator.preview(.someScene, from: someViewController, at: someSourceView)
 ```
 
-- Popover presentation:
+- 气泡展示:
 
 ```
 navigator.popover(.someScene, from: somView)
 ```
 
-- Transition:
+- 场景过渡:
+
+  自定义 Tansition 类, 并且实现 Transition 协议
 
 ```
 navigator.transition(to: .someScene, with: someInteractiveTransition)
 ```
 
-- View creation:
+- 创建一个场景，获取对应的类:
 
 ```
 let loginView = navigator.view(for: .login)
 ```
 
-- Traverse (get the current stack hierarchy; sceneName and presentationType):
+- 遍历获取当前堆栈的层次结构`sceneName`和`presentationType`
 
 ```
 navigator.traverse { state in
@@ -168,34 +172,34 @@ navigator.traverse { state in
 }
 ```
 
-- Relative stack navigation using builder:
+- 使用 builder 的相对堆栈导航:
 
 ```
 navigator.build { builder in
     builder.modal(.contact)
-    builder.modalNavigation(.detail) // Modal presentation with a navigation controller.
+    builder.modalNavigation(.detail) // 模态展示一个包含导航控制器的视图.
     builder.push(.avatar)
 }
 ```
 
-If you use relative navigation, you can add new scenes over the current hierarchy.
+如果使用相对导航，可以在当前层次结构上添加新场景。
 
-- Absolute stack navigation using builder (the current stack will be recycled and reloaded if possible):
+- 使用 builder 在绝对导航中进行操作
 
-```
-navigator.build { builder in
-    builder.root(name: .home)
-    builder.modalNavigation(.login)
-}
-```
+  ```
+  navigator.build { builder in
+      builder.root(name: .home)
+      builder.modalNavigation(.login)
+  }
+  ```
 
-If you use absolute navigation, the hierarchy will be rebuilded from root. If the current hierarchy match the targeted hierarchy, the view controllers will be recycled and reloaded.
+  如果使用绝对导航，将从根视图重新构建层次结构。如果当前层次结构与目标层次结构匹配，视图控制器将被回收并重新加载。
 
-Use absolute navigation to show a certain hierarchy no matter what is the current state.
+  无论当前状态如何，都要使用绝对导航来显示某个层次结构。
 
-- Operation based navigation:
+- 自定义导航行为:
 
-For more complex navigation you can create and concatenate operations that will be executed serially. This can be easyly archived by creating a new SceneOperation and extending the Navigator protocol.
+  对于更复杂的导航，您可以创建并连接将串行执行的操作。通过创建一个新的 SceneOperation 并扩展 Navigator 协议，可以轻松地对其进行归档。
 
 ```
 class SomeOperation {
@@ -222,11 +226,11 @@ extension SomeOperation: SceneOperation {
 }
 ```
 
-- Interceptors:
+- 拦截器:
 
-By implementing the protocol SceneOperationInterceptor you can intercept all the operations being executed by the navigator. This protocol allows you to change the behavior of the navigator in some cases.
+通过实现协议`SceneOperationInterceptor`，您可以拦截导航器执行的所有操作。该协议允许您在某些情况下更改导航器的行为。
 
-For example for displaying the contacts persmissions alert just before presenting some edit contact view:
+例如，在显示一些编辑联系人视图之前显示联系人丢失警告:
 
 ```
 class ContactsPermissionsInterceptor: SceneOperationInterceptor {
@@ -242,7 +246,9 @@ class ContactsPermissionsInterceptor: SceneOperationInterceptor {
 
 If you want to stop the execution of the operation, you must return nil on operation(with:context:)
 
-To start intercepting, a registration of the interceptor is needed.
+如果您想停止操作的执行，您必须在`operation(for operation: with context:)`操作上返回 nil
+
+要开始使用拦截，需要对拦截器进行注册。
 
 ```
 navigator.register(ContactsPermissionsInterceptor())
