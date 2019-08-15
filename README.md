@@ -17,13 +17,13 @@ pod 'PageNavigator'
 ### Create a Navigator
 
 ```
-// NavigationController container based navigator
+/// NavigationController container based navigator
 let navigator = NavNavigator(window: UIWindow())
 
-// TabBarController container based navigator
+/// TabBarController container based navigator
 let navigator = TabNavigator(window: UIWindow())
 
-// Custom container based navigator
+/// Custom container based navigator
 let navigator = ContainerNavigator(window: UIWindow())
 
 ```
@@ -34,29 +34,29 @@ The navigator is the main entry point.
 
 ```
 extension SceneName {
-static let login: SceneName = "Login"
+    static let login: SceneName = "Login"
 }
 
 class LoginScene: SceneHandler {
-var name: SceneName {
-return .login
-}
+    var name: SceneName {
+        return .login
+    }
 
-func view(with parameters: Parameters) -> UIViewController {
-let vc = UIViewController()
-vc.view.backgroundColor = .red
-return vc
-}
+    func view(with parameters: Parameters) -> UIViewController {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .red
+        return vc
+    }
 
-// Optional
-func reload(_ viewController: UIViewController, parameters: Parameters) {
-// Do nothing by default
-}
+    /// Optional
+    func reload(_ viewController: UIViewController, parameters: Parameters) {
+        // Do nothing by default
+    }
 
-// Optional
-var isReloadable: Bool {
-return true
-}
+    /// Optional
+    var isReloadable: Bool {
+        return true
+    }
 }
 
 ```
@@ -160,9 +160,9 @@ let loginView = navigator.view(for: .login)
 
 ```
 navigator.traverse { state in
-if state.names.contains(.collection) {
-// Do something
-}
+    if state.names.contains(.collection) {
+        // Do something
+    }
 }
 ```
 
@@ -170,9 +170,9 @@ if state.names.contains(.collection) {
 
 ```
 navigator.build { builder in
-builder.modal(.contact)
-builder.modalNavigation(.detail) // Modal presentation with a navigation controller.
-builder.push(.avatar)
+    builder.modal(.contact)
+    builder.modalNavigation(.detail) // Modal presentation with a navigation controller.
+    builder.push(.avatar)
 }
 ```
 
@@ -182,8 +182,8 @@ If you use relative navigation, you can add new scenes over the current hierarch
 
 ```
 navigator.build { builder in
-builder.root(name: .home)
-builder.modalNavigation(.login)
+    builder.root(name: .home)
+    builder.modalNavigation(.login)
 }
 ```
 
@@ -197,26 +197,26 @@ For more complex navigation you can create and concatenate operations that will 
 
 ```
 class SomeOperation {
-fileprivate var scenes: [Scene]
-fileprivate let renderer: SceneRenderer
+    fileprivate var scenes: [Scene]
+    fileprivate let renderer: SceneRenderer
 
-init(scenes: [Scene], renderer: SceneRenderer) {
-self.scenes = scenes
-self.renderer = renderer
-}
+    init(scenes: [Scene], renderer: SceneRenderer) {
+        self.scenes = scenes
+        self.renderer = renderer
+    }
 }
 
 extension SomeOperation: SceneOperation {
-func execute(with completion: CompletionBlock?) {
-let dismissAllOperation = renderer.dismissAll(animated: true)
-let addScenes = renderer.add(scenes: scenes)
-let reloadLast = renderer.reload(scene: scenes.last!)
+    func execute(with completion: CompletionBlock?) {
+        let dismissAllOperation = renderer.dismissAll(animated: true)
+        let addScenes = renderer.add(scenes: scenes)
+        let reloadLast = renderer.reload(scene: scenes.last!)
 
-let complexOperation = dismissAllOperation
-.then(addScenes)
-.then(reloadLast)
-.execute(with: completion)
-}
+        let complexOperation = dismissAllOperation
+        .then(addScenes)
+        .then(reloadLast)
+        .execute(with: completion)
+    }
 }
 ```
 
@@ -228,13 +228,13 @@ For example for displaying the contacts persmissions alert just before presentin
 
 ```
 class ContactsPermissionsInterceptor: SceneOperationInterceptor {
-func operation(with operation: SceneOperation, context: SceneOperationContext) -> SceneOperation? {
-return ShowContactPermissionsIfNeededSceneOperation().then(operation)
-}
+    func operation(with operation: SceneOperation, context: SceneOperationContext) -> SceneOperation? {
+        return ShowContactPermissionsIfNeededSceneOperation().then(operation)
+    }
 
-func shouldIntercept(operation: SceneOperation, context: SceneOperationContext) -> Bool {
-return context.targetState.names.contains(.editContact)
-}
+    func shouldIntercept(operation: SceneOperation, context: SceneOperationContext) -> Bool {
+        return context.targetState.names.contains(.editContact)
+    }
 }
 ```
 
