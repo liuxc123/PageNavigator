@@ -99,6 +99,12 @@ private extension AddSceneOperation {
             self.recursiveShow(scenes: scenes, visibleViewController: viewController, completion: completion)
         }
 
+        if #available(iOS 13.0, *) {
+            if viewController.modalPresentationStyle == .automatic || viewController.modalPresentationStyle == .pageSheet {
+                viewController.modalPresentationStyle = .fullScreen
+            }
+        }
+
         from.present(viewController, animated: scene.isAnimated, completion: recursiveCompletion)
     }
 
@@ -113,6 +119,12 @@ private extension AddSceneOperation {
 
         let recursiveCompletion: CompletionBlock = {
             self.recursiveShow(scenes: scenes, visibleViewController: viewController.viewControllers.first, completion: completion)
+        }
+
+        if #available(iOS 13.0, *) {
+            if viewController.modalPresentationStyle == .automatic || viewController.modalPresentationStyle == .pageSheet {
+                viewController.modalPresentationStyle = .fullScreen
+            }
         }
 
         from.present(viewController, animated: scene.isAnimated, completion: recursiveCompletion)

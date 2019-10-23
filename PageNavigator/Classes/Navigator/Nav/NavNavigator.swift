@@ -14,6 +14,7 @@ final public class NavNavigator: Navigator, NavigatorPreviewing {
     public var interceptors: [SceneOperationInterceptor] = []
 
     public let provider: SceneProvider
+    public let urlProvider: URLSceneProvider
     public let urlHandler: SceneURLHandler
     public let manager: SceneOperationManager
 
@@ -23,6 +24,7 @@ final public class NavNavigator: Navigator, NavigatorPreviewing {
         self.manager = sceneOperationManager
         self.urlHandler = sceneURLHandler
 
+        self.urlProvider = URLSceneProvider()
         self.provider = SceneProvider(manager: sceneOperationManager)
     }
 }

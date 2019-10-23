@@ -9,11 +9,13 @@
 import Foundation
 
 public struct EmptySceneURLHandler: SceneURLHandler {
+
     public init() {
 
     }
 
-    public func sceneContexts(from url: URL) -> [SceneContext] {
+    public func sceneContexts(from url: URLConvertible) -> [SceneContext] {
         return []
     }
+
 }

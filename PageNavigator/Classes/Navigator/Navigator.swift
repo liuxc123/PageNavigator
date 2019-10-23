@@ -14,6 +14,7 @@ import UIKit
 public protocol Navigator: class {
     var manager: SceneOperationManager { get }
     var provider: SceneProvider { get }
+    var urlProvider: URLSceneProvider { get }
     var urlHandler: SceneURLHandler { get }
     var interceptors: [SceneOperationInterceptor] { get  set }
 }
@@ -116,16 +117,6 @@ public extension Navigator {
             logDebug("Build relative navigation")
             navigate(with: manager.add(scenes: scenes), completion: completion)
         }
-    }
-}
-
-// MARK: Deeplink
-
-public extension Navigator {
-    func url(_ url: URL, completion: CompletionBlock? = nil) {
-        logDebug("URL \(url)")
-        let sceneContexts = urlHandler.sceneContexts(from: url)
-        build { sceneContexts.forEach($0.add) }
     }
 }
 
@@ -256,4 +247,5 @@ private extension Navigator {
         return interceptor.operation(for: operation, with: context) ?? EmptySceneOperation()
     }
 }
+
 
