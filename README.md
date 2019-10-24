@@ -7,7 +7,7 @@ A simple app internal navigation framework to replace the cumbersome navigation 
 ## Requirements
 
 - iOS 8.0 later
-- Swift 4.2
+- Swift 5.0
 
 ## Installation
 
@@ -77,6 +77,35 @@ navigator.push(.someScene)
 
 The root scene is the one which it's going to be set as rootViewController of the UIWindow.
 
+
+## Support URL
+
+### Register URL:
+
+- Register url for scene
+```
+navigator.register("navigator://collection") { (url, values, context) -> SceneContext? in
+    return SceneContext(sceneName: .collection, parameters: url.queryParameters, type: .push, isAnimated: true)
+}
+```
+- Register url for handle
+```
+navigator.handle("navigator://toast") { (url, values, context) -> Bool in
+    print("handle: \(url.queryParameters["text"] ?? "")")
+    return true
+}
+```
+
+### Open URL:
+
+```
+navigator.url("navigator://toast")
+
+// or
+navigator.push(for: "navigator://toast")
+navigator.present(for: "navigator://toast")
+```
+
 ## Features
 
 - Present:
@@ -128,12 +157,6 @@ The root scene is the one which it's going to be set as rootViewController of th
   ```
 
   Calls the method reload from the scene handler.
-
-- URLs:
-
-  ```
-  navigator.url(someURL)
-  ```
 
 - Force touch preview
 

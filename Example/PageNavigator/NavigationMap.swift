@@ -49,7 +49,6 @@ enum NavigationMap {
         }
 
         navigator.register("navigator://collection") { (url, values, context) -> SceneContext? in
-            debugPrint("values: \(values)")
             return SceneContext(sceneName: .collection, parameters: url.queryParameters, type: .push, isAnimated: true)
         }
 

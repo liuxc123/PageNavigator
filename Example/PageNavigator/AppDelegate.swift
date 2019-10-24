@@ -42,6 +42,7 @@ extension AppDelegate {
         NavigatorLogger.level = .debug
         navigator.root(.tabBar)
         navigator.setTabs([.red, .green, .blue, .table])
+
     }
 }
 

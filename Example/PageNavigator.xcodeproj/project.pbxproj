@@ -29,6 +29,7 @@
 		0450D51B22CC9BA500DF175D /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450D50322CC9BA400DF175D /* UIColor+Utils.swift */; };
 		0450D51C22CC9BA500DF175D /* LeftTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450D50522CC9BA400DF175D /* LeftTransition.swift */; };
 		0450D51D22CC9BA500DF175D /* Interceptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450D50722CC9BA400DF175D /* Interceptors.swift */; };
+		048E998E2361427F0022BD4F /* README_CN.md in Resources */ = {isa = PBXBuildFile; fileRef = 048E998D2361427F0022BD4F /* README_CN.md */; };
 		04AE50ED22CDCEDE0089A405 /* GTUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE50EC22CDCEDE0089A405 /* GTUITabBarController.swift */; };
 		04AE50EF22CDCF240089A405 /* GTUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AE50EE22CDCF240089A405 /* GTUINavigationController.swift */; };
 		4D62C684B654D3C1BAAF8D24 /* Pods_PageNavigator_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1E369D170227BD31A84A8E /* Pods_PageNavigator_Tests.framework */; };
@@ -73,6 +74,7 @@
 		0450D50322CC9BA400DF175D /* UIColor+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
 		0450D50522CC9BA400DF175D /* LeftTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftTransition.swift; sourceTree = "<group>"; };
 		0450D50722CC9BA400DF175D /* Interceptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interceptors.swift; sourceTree = "<group>"; };
+		048E998D2361427F0022BD4F /* README_CN.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README_CN.md; path = "../../../../.Trash/PageNavigator 下午6.03.41/README_CN.md"; sourceTree = "<group>"; };
 		04AE50EC22CDCEDE0089A405 /* GTUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTUITabBarController.swift; sourceTree = "<group>"; };
 		04AE50EE22CDCF240089A405 /* GTUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTUINavigationController.swift; sourceTree = "<group>"; };
 		19489721CBA1BD98978A6B95 /* Pods_PageNavigator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PageNavigator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				2713A37CE52E67A46111FF32 /* PageNavigator.podspec */,
+				048E998D2361427F0022BD4F /* README_CN.md */,
 				3AAF6263043009DE4C79302A /* README.md */,
 				8BBCE259A5FC03D6859A99BE /* LICENSE */,
 			);
@@ -366,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				048E998E2361427F0022BD4F /* README_CN.md in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
