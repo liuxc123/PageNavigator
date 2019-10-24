@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'PageNavigator'
-  s.version          = '1.0.2'
+  s.version          = '1.1.0'
   s.summary          = 'A simple app internal navigation framework to replace the cumbersome navigation logic.'
   s.homepage         = 'https://github.com/liuxc123/PageNavigator'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
