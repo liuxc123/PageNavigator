@@ -82,13 +82,13 @@ The root scene is the one which it's going to be set as rootViewController of th
 
 ### Register URL:
 
-- Register url for scene
+- Register url for a scene
 ```
 navigator.register("navigator://collection") { (url, values, context) -> SceneContext? in
     return SceneContext(sceneName: .collection, parameters: url.queryParameters, type: .push, isAnimated: true)
 }
 ```
-- Register url for handle
+- Register url for a handle
 ```
 navigator.handle("navigator://toast") { (url, values, context) -> Bool in
     print("handle: \(url.queryParameters["text"] ?? "")")
