@@ -28,8 +28,8 @@ class CollectionSceneHandler: SceneHandler {
         if let state = parameters[Parameter.stateLabel] as? String {
             view.stateText = state
         }
-        view.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 3)
-        view.title = "Collection"
+        view.title = "collection"
+        view.hidesBottomBarWhenPushed = true
         return view
     }
 

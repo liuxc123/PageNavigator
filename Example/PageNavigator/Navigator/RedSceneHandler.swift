@@ -24,7 +24,7 @@ class RedSceneHandler: SceneHandler {
         if let state = parameters[CollectionSceneHandler.Parameter.stateLabel] as? String {
             view.stateText = state
         }
-        view.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
+        view.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
         view.title = "Red"
         return view
     }

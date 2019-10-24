@@ -1,6 +1,6 @@
 {
   "name": "PageNavigator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "summary": "A simple app internal navigation framework to replace the cumbersome navigation logic.",
   "homepage": "https://github.com/liuxc123/PageNavigator",
   "license": {
@@ -12,16 +12,17 @@
   },
   "source": {
     "git": "https://github.com/liuxc123/PageNavigator.git",
-    "tag": "1.0.1"
+    "tag": "1.0.2"
   },
   "platforms": {
     "ios": "8.0"
   },
   "requires_arc": true,
-  "swift_version": "4.2",
+  "swift_versions": "5.0",
   "source_files": "PageNavigator/Classes/**/*",
   "frameworks": [
     "UIKit",
     "Foundation"
-  ]
+  ],
+  "swift_version": "5.0"
 }

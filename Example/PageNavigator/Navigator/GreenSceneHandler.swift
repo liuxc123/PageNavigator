@@ -26,7 +26,7 @@ class GreenSceneHandler: SceneHandler {
             view.stateText = state
         }
 
-        view.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
+        view.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
         view.title = "Green"
         return view
     }

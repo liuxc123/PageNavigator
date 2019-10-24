@@ -26,7 +26,7 @@ class BlueSceneHandler: SceneHandler {
             view.stateText = state
         }
 
-        view.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
+        view.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 3)
         view.title = "Blue"
         return view
     }

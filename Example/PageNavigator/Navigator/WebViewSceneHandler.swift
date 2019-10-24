@@ -21,9 +21,9 @@ class WebViewSceneHandler: SceneHandler {
     }
 
     func view(with parameters: Parameters = [:]) -> UIViewController {
-        guard let url = parameters["url"] as? URL else {
+        guard let url = parameters["url"] as? URLConvertible else {
             return SFSafariViewController(url: URL(string: "http://redirect.simba.taobao.com")!)
         }
-        return SFSafariViewController(url: url)
+        return SFSafariViewController(url: url.urlValue!)
     }
 }

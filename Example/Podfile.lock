@@ -1,5 +1,5 @@
 PODS:
-  - PageNavigator (1.0.1)
+  - PageNavigator (1.0.2)
 
 DEPENDENCIES:
   - PageNavigator (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  PageNavigator: 319e3643f780f775546cae922158a39ee9981541
+  PageNavigator: 43554de5420a23c578a7138893ed34dc76f52d72
 
 PODFILE CHECKSUM: 85db24c3088cb902962558403c815062ae222704
 
-COCOAPODS: 1.6.2
+COCOAPODS: 1.8.3

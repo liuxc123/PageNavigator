@@ -15,13 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        NavigationMap.initialize(navigator: navigator)
+        setupRoot()
         setupWindow()
-        setupNavigator()
 
         return true
+    }
+
+    /// 处理url open
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return navigator.url(url)
     }
 
 }
@@ -32,18 +38,10 @@ extension AppDelegate {
         window?.makeKeyAndVisible()
     }
 
-    func setupNavigator() {
-        navigator.register(Interceptor())
-        navigator.register([CollectionSceneHandler(),
-                            TableSceneHandler(),
-                            RedSceneHandler(),
-                            GreenSceneHandler(),
-                            BlueSceneHandler(),
-                            NavBarSceneHandler(),
-                            TabBarSceneHandler(),
-                            WebViewSceneHandler()])
+    func setupRoot() {
+        NavigatorLogger.level = .debug
         navigator.root(.tabBar)
-        navigator.setTabs([.blue, .red, .table])
+        navigator.setTabs([.red, .green, .blue, .table])
     }
 }
 

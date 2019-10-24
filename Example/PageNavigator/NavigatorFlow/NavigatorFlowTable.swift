@@ -8,24 +8,26 @@
 
 import UIKit
 
-class NavigatorFlowTableController: UITableViewController {
+class NavigatorFlowTable: UITableViewController {
 
     var dataSource: [[String: Any]] {
         return [
             ["title": "打开一个内部red页面",
-             "url": "webus://red#push"],
+             "url": "navigator://red#push"],
             ["title": "打开一个内部green页面",
-             "url": "webus://green#modal"],
+             "url": "navigator://green#modal"],
             ["title": "打开一个内部blue页面",
-             "url": "webus://blue#modalNavigation"],
+             "url": "navigator://blue#modalNavigation"],
             ["title": "打开一个内部collection页面",
-             "url": "webus://collection#modalNavigation"],
+             "url": "navigator://collection#modalNavigation"],
             ["title": "打开一个http外链 百度",
              "url": "http://www.baidu.com#modal"],
             ["title": "打开一个https外链 京东",
              "url": "https://www.jd.com#modal"],
+            ["title": "打开一个Toast",
+             "url": "navigator://toast?text=提示一个toast信息😝"],
             ["title": "打开一个错误链接",
-             "url": "webus://notarget"],
+             "url": "navigator://notarget"],
         ]
     }
 
@@ -54,9 +56,7 @@ class NavigatorFlowTableController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let url = dataSource[indexPath.row]["url"] as! String
-        navigator.url(URL(string: url)!) {
-            print("导航完成")
-        }
+        _ = navigator.url(url)
     }
 
 }

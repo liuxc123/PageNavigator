@@ -24,8 +24,8 @@ class TableSceneHandler: SceneHandler {
     }
 
     func view(with parameters: Parameters = [:]) -> UIViewController {
-        let view = NavigatorFlowTableController(style: .plain)
-        view.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 4)
+        let view = NavigatorFlowTable(style: .plain)
+        view.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 4)
         view.title = "Table"
         return view
     }
